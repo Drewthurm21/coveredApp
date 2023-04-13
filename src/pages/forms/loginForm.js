@@ -22,14 +22,14 @@ export default function LoginForm(props) {
       user.userName === userName && user.password === password
     ))
 
-    if (user) setUserSelected(true)
+    if (user) setUserSelected(userInfo)
   };
 
 
   return (
     <div className="container mx-auto my-auto">
       <h1>Form Header</h1>
-      {userSelected ? <div>Logged in</div> : <div>Not Logged in</div>}
+      {userSelected ? <div>Logged in as {userSelected.userName}</div> : <div>Not Logged in</div>}
       <form onSubmit={checkUser}>
         <label
           htmlFor='userName'
