@@ -1,13 +1,15 @@
 import '@/styles/globals.css'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-
-const navBtnStyle = 'my-auto hover:scale-125 transition duration-150 ease-in-out'
+import { useEffect, useState } from 'react'
+import Navbar from './components/Navbar'
 
 export default function App({ Component, pageProps }) {
+  const [colorTheme, setColorTheme] = useState('light')
 
-  const router = useRouter()
-  let activeUser = false
+  useEffect(() => {
+    if (colorTheme === 'dark') document.documentElement.classList.add('dark')
+    else document.documentElement.classList.remove('dark')
+
+  }, [colorTheme])
 
   return (
     <div className='container'>
@@ -20,14 +22,7 @@ export default function App({ Component, pageProps }) {
           </div>
           <div className='text-4xl flex flex-col'>Covered</div>
         </div>
-        <div>
-          <nav className='flex flex-row space-x-10 my-3 fixed top-3 right-3 fill'>
-            <Link className={`${navBtnStyle} ${router.pathname === '/' ? 'nav-selected text-lg' : ''}`} href='/'>home</Link>
-            <Link className={`${navBtnStyle} ${router.pathname === '/login' ? 'nav-selected text-lg' : ''}`} href='/login'>login</Link>
-            <Link className={`${navBtnStyle} ${router.pathname === '/signup' ? 'nav-selected text-lg' : ''}`} href='/signup'>sign up</Link>
-            {activeUser && <Link className={`${navBtnStyle} ${router.pathname === '/signout' ? 'nav-selected text-lg' : ''}`} href='/signout'>sign out</Link>}
-          </nav>
-        </div>
+        <Navbar />
       </div>
       <div className='container mt-40 mx-auto'>
         <Component {...pageProps} />
