@@ -29,7 +29,7 @@ export default function App({ Component, pageProps }) {
           </nav>
         </div>
       </div>
-      <div className='container my-40 mx-auto'>
+      <div className='container mt-40 mx-auto'>
         <Component {...pageProps} />
       </div>
     </div>
