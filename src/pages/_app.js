@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }) {
   }, [colorTheme])
 
   return (
-    <div className='container'>
+    <div className='container min-h-screen bg-slate-50 '>
       <div className='flex flex-row relative '>
         <div className='flex flex-col'>
           <div className='flex flex-row absolute top-0 left-10'>
